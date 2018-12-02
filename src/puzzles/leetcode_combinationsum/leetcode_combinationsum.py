@@ -42,6 +42,13 @@
 
 
 
+# READ THIS for a description of a general framework 
+# for set accumulation (subsets, permutations, etc)
+# problems:
+# https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
+
+
+
 
 
 # Success! At first I had some trouble getting duplicate sets
