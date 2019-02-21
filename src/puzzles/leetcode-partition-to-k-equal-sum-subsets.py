@@ -1,35 +1,35 @@
 # FAILED. I couldn't get this one correct by myself.
 
 ## here is the first solution I came up with. It's way too slow:
-# class Solution:
-#     def canPartitionKSubsets(self, nums: 'List[int]', k: 'int') -> 'bool':
-#         subset_target = sum(nums) / k
-#
-#         def rec(nums_i, num_sets, cur_sum):
-#             if nums_i == len(nums):
-#                 # if the current set sum is zero, either the current
-#                 # set is empty, or it could be added to any of our sets
-#                 # without changing their sums
-#                 return num_sets == k and cur_sum == 0
-#             else:
-#                 # try adding each element in the remainder of the array to this set
-#                 for i in range(nums_i, len(nums)):
-#                     # swap selected element to front
-#                     nums[nums_i], nums[i] = nums[i], nums[nums_i]
-#
-#                     new_sum = cur_sum + nums[nums_i]
-#                     complete_set = new_sum == subset_target
-#                     if complete_set:
-#                         if rec(nums_i+1, num_sets+1, 0):
-#                             return True
-#                     else:
-#                         if rec(nums_i+1, num_sets, new_sum):
-#                             return True
-#                     # swap back
-#                     nums[nums_i], nums[i] = nums[i], nums[nums_i]
-#                 return False
-#
-#         return rec(0, 0, 0)
+class Solution:
+    def canPartitionKSubsets(self, nums: 'List[int]', k: 'int') -> 'bool':
+        subset_target = sum(nums) / k
+
+        def rec(nums_i, num_sets, cur_sum):
+            if nums_i == len(nums):
+                # if the current set sum is zero, either the current
+                # set is empty, or it could be added to any of our sets
+                # without changing their sums
+                return num_sets == k and cur_sum == 0
+            else:
+                # try adding each element in the remainder of the array to this set
+                for i in range(nums_i, len(nums)):
+                    # swap selected element to front
+                    nums[nums_i], nums[i] = nums[i], nums[nums_i]
+
+                    new_sum = cur_sum + nums[nums_i]
+                    complete_set = new_sum == subset_target
+                    if complete_set:
+                        if rec(nums_i+1, num_sets+1, 0):
+                            return True
+                    else:
+                        if rec(nums_i+1, num_sets, new_sum):
+                            return True
+                    # swap back
+                    nums[nums_i], nums[i] = nums[i], nums[nums_i]
+                return False
+
+        return rec(0, 0, 0)
 
 # ^^^ analysis of the code: The time complexity would be O(n!)
 # the first recursive call would make n recursive calls, each of which
