@@ -48,6 +48,12 @@ class Solution:
 # tree_size = b^h - 1
 # we're branching on 'k', because we're recursing on each bucket (aka sums), and the solution is
 # only complete once we have allocated all n of our values
+
+# BUT MATH TIME because the first 'k' nodes down each path in the tree will have branching factors
+# [1, 2, 3 ... k-1, k], it's also correct to say the upper bound is k! * k^(n-k)
+# - n-k is the number of nodes that will have the full k branching factor
+# - the "skip subsequent sum buckets if the current one is empty" optimization is what creates
+#   this tighter upper bound
 class Solution(object):
     def canPartitionKSubsets(self, nums, k):
         sums = [0]*k
