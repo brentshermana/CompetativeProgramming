@@ -1,2 +1,0 @@
-# Stansifer
-# CompetativeProgramming
